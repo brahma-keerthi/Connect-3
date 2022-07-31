@@ -26,7 +26,10 @@ public class MainActivity extends AppCompatActivity {
     public void reset(View view){
         turn = 0;
         gameWon = false;
-        int[] gameState = { 2, 2,2 ,2, 2,2 ,2, 2,2 };
+        for(int i =0; i<gameState.length ; ++i){
+            gameState[i] = 2;
+        }
+
 //        playAgain.setVisibility(View.INVISIBLE);
     }
 
