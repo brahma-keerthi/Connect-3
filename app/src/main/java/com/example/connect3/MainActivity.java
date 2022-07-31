@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     public void dropIn(View view) {
         // Gives the view of image
         ImageView tappedOn = (ImageView) view;
-        Button button = (Button) findViewById(R.id.button);
+        LinearLayout gameEnd = (LinearLayout) findViewById(R.id.linearLayout);
+        TextView gameEndText = (TextView) findViewById(R.id.gameEndText);
 
         // Gives the tag of the view
         int tappedView = Integer.parseInt(tappedOn.getTag().toString());
@@ -57,12 +58,17 @@ public class MainActivity extends AppCompatActivity {
 
                     if (gameState[winningPos[0]] == 0) {
                         // BLUE won
-                        Toast.makeText(MainActivity.this, "BLUE WON !!!\nThanks For Using...", Toast.LENGTH_SHORT).show();
-                        button.setVisibility(View.VISIBLE);
+                        Toast.makeText(MainActivity.this, "Thanks For Using...", Toast.LENGTH_SHORT).show();
+                        gameEndText.setText("BLUE WON !!!");
+                        gameEnd.setBackgroundColor(Color.BLUE);
+                        gameEnd.setVisibility(View.VISIBLE);
+
                     } else if (gameState[winningPos[0]] == 1) {
                         // RED won
-                        Toast.makeText(MainActivity.this, "RED WON !!!\nThanks For Using...", Toast.LENGTH_SHORT).show();
-                        button.setVisibility(View.VISIBLE);
+                        Toast.makeText(MainActivity.this, "Thanks For Using...", Toast.LENGTH_SHORT).show();
+                        gameEndText.setText("RED WON !!!");
+                        gameEnd.setBackgroundColor(Color.RED);
+                        gameEnd.setVisibility(View.VISIBLE);
                     }
                     gameWon = true;
                 }
@@ -70,14 +76,17 @@ public class MainActivity extends AppCompatActivity {
 
             if (turn > 8 && !gameWon) {
 //                 Game is draw
-                Toast.makeText(MainActivity.this, "GAME DRAW !!!\nThanks For Using...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Thanks For Using...", Toast.LENGTH_SHORT).show();
                 gameWon = true;
-                button.setVisibility(View.VISIBLE);
+                gameEndText.setText("DRAW !!!");
+                gameEnd.setBackgroundColor(Color.YELLOW);
+                gameEnd.setVisibility(View.VISIBLE);
             }
         }
     }
 
     public void reset(View view){
+        LinearLayout gameEnd = (LinearLayout) findViewById(R.id.linearLayout);
         Button button = (Button)findViewById(R.id.button);
 
         turn = 0;
@@ -90,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             ImageView imageView = (ImageView) grid.getChildAt(i);
             imageView.setImageResource(0);
         }
-        button.setVisibility(View.INVISIBLE);
+        gameEnd.setVisibility(View.INVISIBLE);
     }
 
     @Override
