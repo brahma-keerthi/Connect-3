@@ -1,4 +1,4 @@
-# Connect-3
+## Connect-3
 
 Connect 3 is a android application ( Similar to tic-tac-toe )
 
